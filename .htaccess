@@ -1,0 +1,17 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /edu/api/
+
+    # Redirect all requests to index.php
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)$ index.php [QSA,L]
+</IfModule>
+
+# Disable Directory Listing
+Options -Indexes
+
+# Enable PHP Error Logging
+php_flag display_errors On
+php_flag log_errors On
+php_value error_log "/var/www/html/edu/php_error.log"
